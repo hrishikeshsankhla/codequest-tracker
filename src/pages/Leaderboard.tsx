@@ -8,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  Crown,
   Flame,
   Medal,
   Search,

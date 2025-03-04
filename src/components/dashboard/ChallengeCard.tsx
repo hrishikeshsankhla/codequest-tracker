@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, BookOpen, Code, Clock3 } from "lucide-react";
+import { CSSProperties } from "react";
 
 type ChallengeCardProps = {
   challenge: {
@@ -13,9 +14,10 @@ type ChallengeCardProps = {
     isDaily?: boolean;
   };
   className?: string;
+  style?: CSSProperties;
 };
 
-export const ChallengeCard = ({ challenge, className }: ChallengeCardProps) => {
+export const ChallengeCard = ({ challenge, className, style }: ChallengeCardProps) => {
   const { title, difficulty, category, timeEstimate, description, isDaily } = challenge;
   
   const difficultyColor = {
@@ -25,7 +27,10 @@ export const ChallengeCard = ({ challenge, className }: ChallengeCardProps) => {
   }[difficulty];
   
   return (
-    <div className={cn("glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md", className)}>
+    <div 
+      className={cn("glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md", className)}
+      style={style}
+    >
       {isDaily && (
         <div className="bg-primary/10 text-primary px-4 py-1.5 text-xs font-medium">
           Daily Challenge

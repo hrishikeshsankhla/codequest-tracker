@@ -1,6 +1,7 @@
 
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { CSSProperties } from "react";
 
 type StatsCardProps = {
   title: string;
@@ -9,6 +10,7 @@ type StatsCardProps = {
   icon: React.ReactNode;
   formatter?: (value: number) => string;
   className?: string;
+  style?: CSSProperties;
 };
 
 export const StatsCard = ({
@@ -17,7 +19,8 @@ export const StatsCard = ({
   previousValue,
   icon,
   formatter = (val) => val.toString(),
-  className
+  className,
+  style
 }: StatsCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -44,7 +47,7 @@ export const StatsCard = ({
         isVisible && "opacity-100 translate-y-0",
         className
       )}
-      style={{ transitionDelay: "calc(var(--index, 0) * 100ms)" }}
+      style={{ ...style, transitionDelay: "calc(var(--index, 0) * 100ms)" }}
     >
       <div className="flex justify-between items-start mb-4">
         <p className="text-sm font-medium text-muted-foreground">{title}</p>
